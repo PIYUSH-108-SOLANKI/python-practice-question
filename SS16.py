@@ -1,11 +1,15 @@
 #Generate a random number. Prompt the user to guess until they get it right. Give hints (too high/too low).
 import random
 num = random.randint(1, 100)
-guess = int(input("Guess a number between 1 and 100: "))
-while guess != num:
-    if guess < num:
+attempts = 3
+for i in range(attempts):
+    guess = int(input("Guess a number between 1 and 100: "))
+    if guess == num:
+        print("You got it!")
+        break
+    elif guess < num:
         print("Too low!")
     else:
         print("Too high!")
-    guess = int(input("Guess again: "))
-print("You got it!")
+else:
+    print(f"Sorry, you've used all your attempts. The number was {num}.")
